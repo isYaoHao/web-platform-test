@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .model {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .model-content {
+        height: 200px;
+        width: 300px;
+        border: 1px solid;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">点击打开modal</button>
+  </body>
+</html>
+<script>
+  const btn = document.getElementById('btn');
+  btn.addEventListener('click', function (e) {
+    console.log('click');
+    const model = document.querySelector('.model');
+    model.setAttribute('style', '');
+  });
+  createModel();
+  function createModel() {
+    const ele = document.createElement('div');
+    ele.setAttribute('class', 'model');
+    ele.setAttribute('style', 'display:none');
+    document.body.append(ele);
+    const modelContent = document.createElement('div');
+    modelContent.setAttribute('class', 'model-content');
+    ele.append(modelContent);
+    ele.addEventListener(
+      'click',
+      function () {
+        
+        this.style = 'display:none';
+      },
+      true
+    );
+  }
+</script>
