@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h1>不使用用input file使用 showOpenFilePicker 上传文件测试</h1>
+        <div>
+            <a link href="https://developer.mozilla.org/en-US/docs/Web/API/Window/showOpenFilePicker">参考文档</a>
+        </div>
+        <button id='btn'>点击打开文件</button>
+        <div>
+            <pre id='textarea' contenteditable></pre>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+<script>
+    const btn = document.getElementById('btn');
+
+    btn.addEventListener('click', async function (e) {
+        const [fileHandle] = await window.showOpenFilePicker()
+        const fileData = await fileHandle.getFile()
+        const txt = await fileData.text()
+        textarea.innerText = txt
+        console.log(txt, 'fileHandle')
+
+    })
+
+
+
+</script>
